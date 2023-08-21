@@ -135,7 +135,57 @@ int main()
 	return 0;
 }
 
-strstr（找子串）
+strstr（找子串）返回的是地址
+模拟查找字符串（KMP算法）
+char* My_strstr(const char* p1,const char* p2)
+{
+	char* s1 = p1;
+	char* cur = p1;
+	char* s2 = p2;
+	assert(p1 && p2);
+	if (*p2 == '\0')
+	{
+		return p1;
+	}
+	while (*cur)
+	{
+		s1 = cur;
+		s2 = p2;
+		while ((*s1 != '\0') && (*s2 != '\0') && (*s1 == *s2))
+		{
+			s1++;
+			s2++;
+		}
+		if (*s2 == '\0')
+		{
+			return cur;
+		}
+		else if(*s1 == '\0')
+		{
+			return NULL;
+		}
+		cur++;
+	} 
+	return NULL;
+}
+int main()
+{
+	char* arr = "df";
+	char* arr1 = "dfg";
+     char* ret=My_strstr(arr, arr1);
+	 if (ret == NULL)
+	{
+		 printf("不存在\n");
+	}
+	 else
+	 {
+		 printf("%s\n", ret);
+	 }
+	return 0;
+
+}
+
+
 gets 读取一行
 
 strcpy拷贝函数（目的地，源头）strncpy(目的地，源头，拷贝个数)
@@ -206,7 +256,45 @@ int main()
 	return 0;
 }
 
+
+
+strtok（char *str, const char * sep ）（第一个参数是字符串）(sep参数是个字符串，定义了用作分隔符的字符集合)返回是一个地址
+用法
+int main()
+{
+	char* arr = "123.123.123.123.123";
+	char* p = ".";
+	char arr1[1024] = " ";
+	strcpy(arr1, arr);
+	char* ret = NULL;
+	for (ret = strtok(arr1, p); ret != NULL; ret = strtok(NULL, p))
+	{
+		printf("%s\n", ret);
+	}
+	return 0;
+}
+strerror(错误报告函数返回错误码所对应错误信息)char * strerror（itn errnum）;
 strlen(string1,string2)相等返回0，1>2返回的值大于0，1<2,返回的值小于0；比较字符串长度
+
+
+函数	如果它的参数符合下列条件就返回真
+iscntrl	任何控制字符
+isspace	空白字符：空格‘ ’，换页‘\f’，换行'\n'，回车'\r'，制表符'\t'，或垂直制表符'\v'
+isdigit	十进制数字0~9
+isxdigit	十六进制数字，包括所有十进制数字，小写字母a~f,大写字母A~F
+islower	小写字母a~z
+isupper	大写字母A~Z
+isalpha	字母a~z或A~Z
+isalnum	字母或数字a~z，A~Z或0~9
+ispunct	标点符号，任何不属于数字或字母的图像字符（可打印符号）
+isgraph	任何图像字符
+isprint	任何可打印字符，包括图像字符和空白字符
+
+
+字符转换
+int tolower(int c)//转小写字母
+int toupper(int c)//转大写字母
+
 auto（自动）
 break 跳出
 case
