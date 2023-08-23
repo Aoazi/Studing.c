@@ -404,3 +404,52 @@ int main()
 	int (*(*parr)[9])(int, int) = &pa;//数组指针，指针指向的数组有4个元素，指向的数组的每个元素的类型是一个函数指针
 	return 0;
 }
+结构体的自引用
+struct stu
+{
+	int date;
+	struct stu* next;
+};
+int main()
+{
+
+	return 0;
+}
+
+结构体内存对齐
+
+修改对齐数
+设置默认对齐数为4
+//设置默认对其数为4
+#pragma pack(4)
+struct A
+{
+    char a;
+    int f;
+
+};
+#pragma pack()
+//取消设置的默认对齐数
+int main()
+{
+    return 0;
+}
+
+
+offsetof（偏移量)
+struct A
+{
+    char a;
+    int f;
+
+};
+
+
+int main()
+{ 
+     //宏 
+    printf("%d ", offsetof(struct A, a));
+    printf("%d", offsetof(struct A, f));
+    return 0;
+}
+
