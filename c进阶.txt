@@ -453,3 +453,76 @@ int main()
     return 0;
 }
 
+结构体传参
+struct stu
+{
+	int a;
+	char b;
+	double c;
+};
+void Init( struct stu* tmp)
+{
+	tmp->a = 10;
+	tmp->b =  'w';
+	tmp->c = 3.14;
+
+}
+
+void print(const struct stu* p)
+{
+	printf("%d %c %lf", p->a, p->b, p->c);
+}
+int main()
+{
+	struct stu s = {0};
+	Init(&s);
+	print(&s);
+	return 0;
+}
+
+
+位段和结构体相差不多但可移植性比较差       位段空间（省空间数据包小一些）
+struct stt
+{
+	int a : 2;
+	int b : 5;
+	int c : 10;
+	int d : 31;
+};
+int main()
+{
+	struct stt s;
+	printf("%d", sizeof(s));
+	return 0;
+}
+
+枚举类型	
+enum  Sex
+{
+	//枚举常量
+	mall//最开始有一个值
+	,falll,
+	serce
+ 
+};
+int main()
+{
+	enum Sex s =mall;
+	printf("%d %d %d", mall, falll, serce);
+	//printf("%d %d %d",)
+	return 0;
+}
+
+
+联合（共用体）（公用一份空间）
+
+union un
+{
+	char v;
+	int a;
+};
+int main()
+{
+	union un n;
+	printf("%d", sizeof(n));
+	return 0;
